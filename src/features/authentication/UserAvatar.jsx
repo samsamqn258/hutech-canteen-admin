@@ -16,11 +16,12 @@ const Avatar = styled.img`
 
 export default function UserAvatar() {
     const { user } = useUser();
-    const { name } = user;
+    console.log('Helo bạn', user);
+    const { email } = user;
     return (
         <StyledUserAvatar>
             <Avatar src="default-user.jpg" />
-            <span>Xin chào, {name}</span>
+            <span>Xin chào, {email}</span>
         </StyledUserAvatar>
     );
 }
