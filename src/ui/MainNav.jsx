@@ -4,7 +4,12 @@ import {
     HiOutlineScale,
     HiOutlineUser,
 } from 'react-icons/hi';
-import { HiOutlineInbox } from 'react-icons/hi2';
+import { SiNextra } from 'react-icons/si';
+import { MdOutlineLocationOn } from 'react-icons/md';
+import { FaCodeBranch } from 'react-icons/fa';
+import { MdOutlineInventory2 } from 'react-icons/md';
+import { BiCategory } from 'react-icons/bi';
+import { GoClock } from 'react-icons/go';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -59,31 +64,56 @@ export default function MainNav() {
                 <li>
                     <StyledNavLink to="/dashboard">
                         <HiOutlineHome />
-                        <span>HOME</span>
+                        <span>Trang chủ</span>
+                    </StyledNavLink>
+                </li>
+
+                <li>
+                    <StyledNavLink to="/location">
+                        <MdOutlineLocationOn />
+                        <span>Vị trí</span>
+                    </StyledNavLink>
+                </li>
+                <li>
+                    <StyledNavLink to="/opening-hour">
+                        <GoClock />
+                        <span>Giờ hoạt động</span>
+                    </StyledNavLink>
+                </li>
+                <li>
+                    <StyledNavLink to="/store">
+                        <FaCodeBranch />
+                        <span>Chi nhánh</span>
+                    </StyledNavLink>
+                </li>
+                <li>
+                    <StyledNavLink to="/inventory">
+                        <MdOutlineInventory2 />
+                        <span>Kho hàng</span>
                     </StyledNavLink>
                 </li>
                 <li>
                     <StyledNavLink to="/product">
                         <HiOutlineCube />
-                        <span>PRODUCT</span>
+                        <span>Sản phẩm</span>
                     </StyledNavLink>
                 </li>
                 <li>
                     <StyledNavLink to="/category">
-                        <HiOutlineInbox />
-                        <span>CATEGORY</span>
+                        <BiCategory />
+                        <span>Danh mục</span>
                     </StyledNavLink>
                 </li>
                 <li>
-                    <StyledNavLink to="/subCategory">
-                        <HiOutlineScale />
-                        <span>SUB-CATEGORY</span>
+                    <StyledNavLink to="/side-dish">
+                        <SiNextra />
+                        <span>Món phụ</span>
                     </StyledNavLink>
                 </li>
                 <li>
                     <StyledNavLink to="/user">
                         <HiOutlineUser />
-                        <span>USER</span>
+                        <span>Tài khoản</span>
                     </StyledNavLink>
                 </li>
             </NavList>

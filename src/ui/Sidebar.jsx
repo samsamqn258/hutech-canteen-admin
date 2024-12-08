@@ -9,7 +9,7 @@ const StyledSidebar = styled.aside`
     border-right: 1px solid var(--color-grey-100);
     display: flex;
     flex-direction: column;
-    gap: 3.2rem;
+    gap: 1.8rem;
 `;
 
 export default function Sidebar() {

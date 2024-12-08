@@ -13,6 +13,11 @@ import Categories from './pages/Categories';
 import { Toaster } from 'react-hot-toast';
 import ProtectedRouter from './ui/ProtectedRouter';
 import SideDish from './pages/SideDish';
+import Location from './pages/Location';
+import OpeningHour from './pages/OpeningHour';
+import Store from './pages/Store';
+import Inventory from './pages/Inventory';
+import Discount from './pages/Discount';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -41,9 +46,14 @@ function App() {
                             element={<Navigate replace to="dashboard" />}
                         />
                         <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/location" element={<Location />} />
+                        <Route path="/opening-hour" element={<OpeningHour />} />
+                        <Route path="/store" element={<Store />} />
+                        <Route path="/inventory" element={<Inventory />} />
+                        <Route path="/discount" element={<Discount />} />
                         <Route path="/product" element={<Product />} />
                         <Route path="/category" element={<Categories />} />
-                        <Route path="/sideDish" element={<SideDish />} />
+                        <Route path="/side-dish" element={<SideDish />} />
                         <Route path="/account" element={<Account />} />
                         <Route path="/user" element={<User />} />
                     </Route>
