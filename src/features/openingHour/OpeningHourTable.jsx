@@ -13,8 +13,9 @@ export default function OpeningHourTable() {
     if (!openingHours.length) return <Empty resource="Thời gian" />;
     return (
         <Menus>
-            <Table columns="0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.2fr">
+            <Table columns="0.5fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.5fr 0.2fr">
                 <Table.Header>
+                    <div>Khung giờ</div>
                     <div>Thứ 2</div>
                     <div>Thứ 3</div>
                     <div>Thứ 4</div>

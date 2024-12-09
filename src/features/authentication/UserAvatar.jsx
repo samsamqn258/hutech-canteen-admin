@@ -16,7 +16,6 @@ const Avatar = styled.img`
 
 export default function UserAvatar() {
     const { user } = useUser();
-    console.log('Helo bạn', user);
     const { email } = user;
     return (
         <StyledUserAvatar>

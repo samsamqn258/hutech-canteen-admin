@@ -11,9 +11,16 @@ const Number = styled.div`
     font-weight: 600;
     color: var(--color-grey-600);
 `;
+
+const Name = styled.div`
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-grey-600);
+`;
 export default function OpeningHourRow({ openingHour }) {
     const {
         // _id: openingHourID,
+        name,
         monday,
         tuesday,
         wednesday,
@@ -28,28 +35,29 @@ export default function OpeningHourRow({ openingHour }) {
 
     return (
         <Table.Row>
+            <Name>{name}</Name>
             <Number>
                 {monday.open} - {monday.close}
             </Number>
             <Number>
                 {tuesday.open} - {tuesday.close}
-            </Number>{' '}
+            </Number>
             <Number>
                 {wednesday.open} - {wednesday.close}
-            </Number>{' '}
+            </Number>
             <Number>
                 {thursday.open} - {thursday.close}
-            </Number>{' '}
+            </Number>
             <Number>
                 {friday.open} - {friday.close}
-            </Number>{' '}
+            </Number>
             <Number>
-                {saturday.open} - {saturday.close}
-            </Number>{' '}
+                {saturday.open}-{saturday.close}
+            </Number>
             <Number>
                 {sunday.open} - {sunday.close}
             </Number>
-            <span>{format(new Date(createdAt), 'dd-MM-yyyy')}</span>
+            <Number>{format(new Date(createdAt), 'dd-MM-yyyy')} </Number>
             <div>
                 {/* <Modal>
                     <Menus.Menu>

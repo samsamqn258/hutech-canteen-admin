@@ -6,11 +6,10 @@ export function useDeleteCategory() {
     const { isLoading: isDeleting, mutate: deleteCategory } = useMutation({
         mutationFn: deleteCategoryApi,
         onSuccess: () => {
-            toast.success('Đã xóa danh mục thành công');
-
             queryClient.invalidateQueries({
                 queryKey: ['categories'],
             });
+            toast.success('Đã xóa danh mục thành công');
         },
         onError: (error) => {
             toast.error(error.message);
