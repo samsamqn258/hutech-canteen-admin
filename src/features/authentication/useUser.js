@@ -6,6 +6,5 @@ export default function useUser() {
         queryKey: ['user'],
         queryFn: getCurrentUser,
     });
-    console.log('helo user', user);
     return { user, isLoading, isAuthenticated: user?.roles === '101' };
 }

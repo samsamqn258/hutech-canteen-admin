@@ -3,8 +3,6 @@ import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import { useForm } from 'react-hook-form';
-import Select from '../../ui/Select';
-import SpinnerMini from '../../ui/SpinnerMini';
 import useCreateLocation from './useCreateLocation';
 
 export default function CreateLocationForm({ onCloseModal }) {
