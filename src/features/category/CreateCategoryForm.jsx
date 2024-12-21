@@ -64,7 +64,7 @@ export default function CreateCategoryForm({
             >
                 <Input
                     type="text"
-                    id="shop_name"
+                    id="category_name"
                     disabled={isWorking}
                     {...register('category_name', {
                         required: 'Tên danh mục không được bỏ trống',

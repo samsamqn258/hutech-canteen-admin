@@ -7,7 +7,7 @@ export default function useCreateLocation() {
         mutationFn: createLocationApi,
         onSuccess: () => {
             toast.success('Tạo vị trí thành công');
-            queryClient.invalidateQueries('locations');
+            queryClient.invalidateQueries(['locations']);
         },
         onError: (error) => {
             toast.error(error.message);

@@ -7,7 +7,7 @@ import Account from './pages/Account';
 import Login from './pages/Login';
 import GlobalStyles from './styles/GlobalStyles';
 import AppLayout from './ui/AppLayout';
-import User from './pages/User';
+import User from './pages/Users';
 import Product from './pages/Product';
 import Categories from './pages/Categories';
 import { Toaster } from 'react-hot-toast';

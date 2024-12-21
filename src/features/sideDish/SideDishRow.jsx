@@ -6,10 +6,8 @@ import Menus from '../../ui/Menus';
 import { HiPencil, HiTrash } from 'react-icons/hi2';
 import Modal from '../../ui/Modal';
 import ConfirmDelete from '../../ui/ConfirmDelete';
-import useCategories from '../category/useCategories';
-import Spinner from '../../ui/Spinner';
-import useDeleteSubCategory from './useDeleteSubCategory';
-
+import { formatCurrency } from '../../utils/helpers';
+import CreateSideDishForm from './CreateSideDishForm';
 const Img = styled.img`
     display: block;
     width: 6.4rem;
@@ -30,7 +28,7 @@ const Number = styled.div`
 `;
 export default function SideDishRow({ sideDish }) {
     const {
-        _id: subCategoryId,
+        _id: sideDishId,
         sideDish_name,
         price,
         isDeleted,
@@ -40,32 +38,26 @@ export default function SideDishRow({ sideDish }) {
     return (
         <Table.Row>
             <Name>{sideDish_name}</Name>
-            <Number></Number>
+            <Number>{formatCurrency(price)}</Number>
             <span>{format(new Date(createdAt), 'dd-MM-yyyy')}</span>
             <InputChecked isChecked={isDeleted} disabled={isDeleted} />
 
             <div>
                 <Modal>
                     <Menus.Menu>
-                        <Menus.Toggle id={subCategoryId} />
-                        <Menus.List id={subCategoryId}>
-                            <Menus.Button icon={<HiPencil />}>
-                                Chỉnh sửa
-                            </Menus.Button>
-                            <Modal.Open opens="delete-subCategory">
-                                <Menus.Button icon={<HiTrash />}>
-                                    Xóa
+                        <Menus.Toggle id={sideDishId} />
+                        <Menus.List id={sideDishId}>
+                            <Modal.Open opens="update-sideDish">
+                                <Menus.Button icon={<HiPencil />}>
+                                    Chỉnh sửa
                                 </Menus.Button>
                             </Modal.Open>
                         </Menus.List>
+
+                        <Modal.Window name="update-sideDish">
+                            <CreateSideDishForm sideDishToUpdate={sideDish} />
+                        </Modal.Window>
                     </Menus.Menu>
-                    <Modal.Window name="delete-subCategory">
-                        <ConfirmDelete
-                            resourceName="danh mục phụ"
-                            disabled={isDeleting}
-                            onConfirm={() => deleteSubCategory(subCategoryId)}
-                        />
-                    </Modal.Window>
                 </Modal>
             </div>
         </Table.Row>

@@ -12,7 +12,7 @@ export default function SideDishTable() {
     if (!sideDishes.length) return <Empty resource="sản phẩm phụ" />;
     return (
         <Menus>
-            <Table columns="1.6fr 0.6fr 1fr 0.4fr  0.2fr">
+            <Table columns="1.6fr 0.6fr 1fr 1.4fr  0.5fr">
                 <Table.Header>
                     <div>Tên danh mục phụ</div>
                     <div>Chi phí</div>

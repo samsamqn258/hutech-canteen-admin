@@ -14,9 +14,21 @@ const StyledSelect = styled.select`
     box-shadow: var(--shadow-sm);
 `;
 
-function Select({ options, value, onChange, ...props }) {
+function Select({ options, value, onChange, multiple = false, ...props }) {
+    const handleChange = (e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions).map(
+            (option) => option.value
+        );
+        onChange(multiple ? selectedOptions : e.target.value);
+    };
+
     return (
-        <StyledSelect value={value} onChange={onChange} {...props}>
+        <StyledSelect
+            value={value}
+            onChange={handleChange}
+            multiple={multiple}
+            {...props}
+        >
             {options.map((option) => (
                 <option value={option.value} key={option.value}>
                     {option.label}

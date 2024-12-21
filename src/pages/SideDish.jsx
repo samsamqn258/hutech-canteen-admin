@@ -1,18 +1,18 @@
-// import AddSubCategory from '../features/sideDish/AddSubCategory';
-// import SubCategoryTable from '../features/sideDish/SubCategoryTable';
 import Heading from '../ui/Heading';
 import Row from '../ui/Row';
+import AddSideDish from '../features/sideDish/AddSideDish';
+import SideDishTable from '../features/sideDish/SideDishTable';
 
 export default function SideDish() {
     return (
         <>
             <Row type="horizontal">
-                <Heading as="h1">Tất cả các danh mục phụ</Heading>
-                {/* <AddSubCategory /> */}
+                <Heading as="h1">Danh sách sản phẩm phụ</Heading>
+                <AddSideDish />
             </Row>
-            {/* <Row>
-                <SubCategoryTable />
-            </Row> */}
+            <Row>
+                <SideDishTable />
+            </Row>
         </>
     );
 }
