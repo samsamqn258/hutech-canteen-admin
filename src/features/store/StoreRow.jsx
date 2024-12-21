@@ -76,14 +76,6 @@ export default function StoreRow({ store }) {
                         <Modal.Window name="update-store">
                             <CreateStoreForm storeToUpdate={store} />
                         </Modal.Window>
-
-                        {/* <Modal.Window name="delete-cabin">
-                            <ConfirmDelete
-                                resourceName="cabin"
-                                onConfirm={() => deleteCabin(cabinId)}
-                                disabled={isDeleting}
-                            />
-                        </Modal.Window> */}
                     </Menus.Menu>
                 </Modal>
             </div>

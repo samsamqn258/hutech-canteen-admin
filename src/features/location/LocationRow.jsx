@@ -52,14 +52,14 @@ export default function LocationRow({ location }) {
                                 </Menus.Button>
                             </Modal.Open>
                         </Menus.List>
+                        <Modal.Window name="delete-location">
+                            <ConfirmDelete
+                                resourceName="vị trí"
+                                disabled={isDeleting}
+                                onConfirm={() => deleteLocation(locationID)}
+                            />
+                        </Modal.Window>
                     </Menus.Menu>
-                    <Modal.Window name="delete-location">
-                        <ConfirmDelete
-                            resourceName="vị trí"
-                            disabled={isDeleting}
-                            onConfirm={() => deleteLocation(locationID)}
-                        />
-                    </Modal.Window>
                 </Modal>
             </div>
         </Table.Row>

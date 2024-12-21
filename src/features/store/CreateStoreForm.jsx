@@ -24,9 +24,7 @@ export default function CreateStoreForm({ storeToUpdate = {}, onCloseModal }) {
     const { locations, isLocating } = useLocations();
 
     const { _id: updateId, ...updateValues } = storeToUpdate;
-    console.log(updateId, updateValues);
 
-    console.log('Dữ liệu cửa hàng', storeToUpdate);
     const isEditSession = Boolean(updateId);
 
     const { register, handleSubmit, reset, formState } = useForm({

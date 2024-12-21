@@ -2,6 +2,7 @@ import {
     HiOutlineCube,
     HiOutlineHome,
     HiOutlineScale,
+    HiOutlineTag,
     HiOutlineUser,
 } from 'react-icons/hi';
 import { SiNextra } from 'react-icons/si';
@@ -29,7 +30,7 @@ const StyledNavLink = styled(NavLink)`
         color: var(--color-grey-600);
         font-size: 1.6rem;
         font-weight: 500;
-        padding: 1.2rem 2.4rem;
+        padding: 1rem 2.4rem;
         transition: all 0.3s;
     }
 
@@ -102,6 +103,12 @@ export default function MainNav() {
                     <StyledNavLink to="/category">
                         <BiCategory />
                         <span>Danh mục</span>
+                    </StyledNavLink>
+                </li>
+                <li>
+                    <StyledNavLink to="/discount">
+                        <HiOutlineTag />
+                        <span>Giảm giá</span>
                     </StyledNavLink>
                 </li>
                 <li>

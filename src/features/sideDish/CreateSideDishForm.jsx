@@ -2,74 +2,99 @@ import { useState } from 'react';
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
-import useCreateSubCategory from './useCreateSubCategory';
+import useCreateSideDish from './useCreateSideDish';
+import useUpdateSideDish from './useUpdateSideDish';
+
 import Button from '../../ui/Button';
 import Select from '../../ui/Select';
-import useCategories from '../category/useCategories';
 import SpinnerMini from '../../ui/SpinnerMini';
+import { useForm } from 'react-hook-form';
 
-export default function CreateSideDishForm({ onCloseModal }) {
-    const [subCategoryName, setSubCategoryName] = useState();
-    const [selectedCategory, setSelectedCategory] = useState();
-    const { isCreating, createSubCategory } = useCreateSubCategory();
-    const { isLoading, categories } = useCategories();
+export default function CreateSideDishForm({
+    sideDishToUpdate = {},
+    onCloseModal,
+}) {
+    const { createSideDish, isCreating } = useCreateSideDish();
+    const { updateSideDish, isUpdating } = useUpdateSideDish();
 
-    const options = categories.map((category) => ({
-        value: category._id,
-        label: category.meals,
-    }));
+    const isWorking = isCreating || isUpdating;
 
-    function handleSubmit() {
-        if (!subCategoryName) return;
-        createSubCategory(
-            {
-                subCategoryName,
-                selectedCategory,
-            },
-            {
-                onSettled: () => {
-                    setSubCategoryName('');
-                    onCloseModal?.();
+    const { _id: updateId, ...updateValues } = sideDishToUpdate;
+
+    const isEditSession = Boolean(updateId);
+
+    const { register, handleSubmit, reset, formState } = useForm({
+        defaultValues: isEditSession ? updateValues : {},
+    });
+
+    function onSubmit(data) {
+        if (isEditSession)
+            updateSideDish(
+                { newStore: { ...data }, id: updateId },
+                {
+                    onSuccess: (data) => {
+                        reset(), onCloseModal?.();
+                    },
+                }
+            );
+        else
+            createSideDish(
+                {
+                    ...data,
                 },
-            }
-        );
+                {
+                    onSettled: () => {
+                        reset(), onCloseModal?.();
+                    },
+                }
+            );
     }
 
+    const { errors } = formState;
+
     return (
-        <Form onSubmit={handleSubmit} type={onCloseModal ? 'modal' : 'regular'}>
-            <FormRow label="Tên danh mục phụ">
+        <Form
+            onSubmit={handleSubmit(onSubmit)}
+            type={onCloseModal ? 'modal' : 'regular'}
+        >
+            <FormRow label="Tên món phụ" error={errors?.sideDish_name?.message}>
                 <Input
                     type="text"
-                    id="name"
-                    value={subCategoryName}
-                    placeholder="Nhập tên danh mục phụ..."
-                    disabled={isCreating}
-                    onChange={(e) => setSubCategoryName(e.target.value)}
+                    id="sideDish_name"
+                    disabled={isWorking}
+                    {...register('sideDish_name', {
+                        required: 'Tên món phụ không được bỏ trống',
+                    })}
+                    placeholder="Nhập tên món phụ..."
                 />
             </FormRow>
-            <FormRow label="Danh mục cha">
-                {isLoading ? (
-                    <SpinnerMini />
-                ) : (
-                    <Select
-                        value={selectedCategory}
-                        options={options}
-                        key={options.value}
-                        disabled={isCreating}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                    />
-                )}
+
+            <FormRow label="Chi phí" error={errors?.price?.message}>
+                <Input
+                    type="number"
+                    id="price"
+                    disabled={isWorking}
+                    {...register('price', {
+                        required: 'Bắt buộc nhập giá',
+                        min: {
+                            value: 1,
+                            message: 'Giá phải lớn hơn 1',
+                        },
+                    })}
+                />
             </FormRow>
+
             <FormRow>
-                {/* onClick={() => onCloseModal?.()} */}
                 <Button
                     variation="secondary"
                     type="reset"
-                    disabled={isCreating}
+                    onClick={() => onCloseModal?.()}
                 >
                     Hủy
                 </Button>
-                <Button disabled={isCreating}>Thêm</Button>
+                <Button disabled={isWorking}>
+                    {isEditSession ? 'Chỉnh sửa' : 'Tạo mới'}
+                </Button>
             </FormRow>
         </Form>
     );
